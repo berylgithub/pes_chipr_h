@@ -55,9 +55,10 @@ program evaluator
         FUNCTION RMSE(Y, Y_pred) RESULT(rmse_var)
             IMPLICIT NONE
             DOUBLE PRECISION, DIMENSION(:) :: Y, Y_pred
-            DOUBLE PRECISION :: rmse_var
+            DOUBLE PRECISION :: rmse_var, N
 
-            rmse_var = SQRT(SUM((Y-Y_pred)**2))
+            N = size(Y)
+            rmse_var = SQRT(SUM((Y-Y_pred)**2)/N)
         END FUNCTION RMSE
 
 end program evaluator
